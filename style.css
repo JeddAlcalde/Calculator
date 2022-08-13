@@ -1,0 +1,50 @@
+body{
+    border: 4px solid black;
+    display: inline-block;
+    text-align: center;
+    height: 600px;
+    width: 600px;
+}
+
+.display-area{
+    border: 4px solid black;
+    display: inline-block;
+    height: 50px;
+    width: 600px;
+}
+
+.operators{
+    border: 4px solid black;
+    display: inline-block;
+    height: 50px;
+    width: 600px;
+}
+
+.numbers{
+    border: 4px solid black;
+    display: inline-block;
+    height: 50px;
+    width: 600px;
+}
+
+.functions{
+    border: 4px solid black;
+    display: inline-block;
+    height: 50px;
+    width: 600px;
+}
+
+.operator{
+    height: 50px;
+    width: 50px;
+}
+
+.number{
+    height: 40px;
+    width: 40px;
+}
+
+.func{
+    height: 50px;
+    width: 50px;
+}
