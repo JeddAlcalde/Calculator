@@ -1,5 +1,3 @@
-let displayVal = "15";
-
 function add(a, b){
     return a + b;
 }
@@ -38,6 +36,35 @@ function operate(operator, a, b){
     }
 }
 
-let displaying = document.querySelector("input");
+let displayDiv = document.querySelector(".displayDiv");
 
-displaying.textContent = displayVal;
+let display = document.querySelector(".display-area");
+
+let displayVal = document.querySelector(".display-area").textContent;
+
+document.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", function(e){
+
+        let tempVal = displayVal;
+        displayDiv.removeChild(display);
+        let newText = document.createElement("p");
+
+        if(button.innerText == "CLEAR"){
+            newText.textContent = "";
+        }
+
+        else if(button.innerText == "="){
+            newText.textContent = Parser.evaluate(tempVal).toString();
+        }
+
+        else{
+            newText.textContent = displayVal + button.textContent;
+        }
+        newText.classList.add("display-area");
+        displayDiv.appendChild(newText);
+
+        display = newText;
+
+        displayVal = display.textContent;
+    })
+});
