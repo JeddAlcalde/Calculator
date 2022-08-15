@@ -15,20 +15,25 @@ function divide(a, b){
 }
 
 function operate(operator, a, b){
+
+    let newA = parseInt(a);
+    let newB = parseInt(b);
+
+
     if(operator == "+"){
-        return add(a, b);
+        return add(newA, newB);
     }
 
     else if(operator == "-"){
-        return subtract(a, b);
+        return subtract(newA, newB);
     }
 
     else if(operator == "*"){
-        return multiply(a, b);
+        return multiply(newA, newB);
     }
 
     else if(operator == "/"){
-        return divide(a, b);
+        return divide(newA, newB);
     }
 
     else{
@@ -42,6 +47,12 @@ let display = document.querySelector(".display-area");
 
 let displayVal = document.querySelector(".display-area").textContent;
 
+let numA = "";
+let numB = "";
+let operator = "";
+
+let calculatedVal = operate("+", "2", "5")
+
 document.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", function(e){
 
@@ -51,20 +62,41 @@ document.querySelectorAll("button").forEach((button) => {
 
         if(button.innerText == "CLEAR"){
             newText.textContent = "";
+            numA = "";
+            numB = "";
+            operator = '';
         }
 
         else if(button.innerText == "="){
-            newText.textContent = Parser.evaluate(tempVal).toString();
+            newText.textContent = operate(operator, numA, numB);
+
+            numA = newText.textContent;
+            numB = "";
+            operator = "";
         }
 
         else{
             newText.textContent = displayVal + button.textContent;
+
+            if(isNaN(button.textContent) === false){
+                if(numA.length === 0){
+                    numA = button.textContent;
+                }
+                else if(numB.length === 0){
+                    numB = button.textContent;
+                }
+            }
+
+            else{
+                operator = button.textContent;
+            }
         }
         newText.classList.add("display-area");
+
         displayDiv.appendChild(newText);
 
         display = newText;
 
         displayVal = display.textContent;
     })
-});
+})
